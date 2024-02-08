@@ -33,3 +33,4 @@ C:\Users\Psouzat\source\repos\ApiTodoListBack\ApiTodoListBack\obj\Debug\net8.0\r
 C:\Users\Psouzat\source\repos\ApiTodoListBack\ApiTodoListBack\obj\Debug\net8.0\ApiTodoListBack.pdb
 C:\Users\Psouzat\source\repos\ApiTodoListBack\ApiTodoListBack\obj\Debug\net8.0\ApiTodoListBack.genruntimeconfig.cache
 C:\Users\Psouzat\source\repos\ApiTodoListBack\ApiTodoListBack\obj\Debug\net8.0\ref\ApiTodoListBack.dll
+C:\Users\Psouzat\source\repos\ApiTodoListBack\ApiTodoListBack\obj\Debug\net8.0\ApiTodoListBack.sourcelink.json

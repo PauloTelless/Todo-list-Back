@@ -9,6 +9,6 @@ public class AppDbContext : DbContext
     public AppDbContext(DbContextOptions options) : base (options) { }
 
     public DbSet<Tarefa> Tarefas { get; set; }
-    public DbSet<Tarefa> TarefasComplete { get; set; }
+    public DbSet<TarefaCompleta> TarefasComplete { get; set; }  
 
 }

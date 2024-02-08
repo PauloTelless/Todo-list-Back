@@ -33,37 +33,26 @@ public class TarefasController : ControllerBase
 
         return tarefa;
     }
-
+    
     [HttpGet("complete")]
-    public ActionResult<IEnumerable<Tarefa>> GetCompletes()
+    public ActionResult<IEnumerable<TarefaCompleta>> GetAllTaskComplete()
     {
-        var tarefas = _context.TarefasComplete.ToList();
+        var tasksComplete = _context.TarefasComplete.ToList();
 
-        return tarefas;
+        return tasksComplete;
     }
-
+    
     [HttpPost("complete")]
-    public ActionResult<Tarefa> PostTaskComplete(Tarefa tarefa)
+    public ActionResult<TarefaCompleta> PostTaskComplete(TarefaCompleta tarefa)
     {
-        try
-        {
-            _context.Tarefas.Add(tarefa);
+        _context.TarefasComplete.Add(tarefa);
 
-            _context.SaveChanges(); 
-            
-            return tarefa;
-        }
-        catch (Exception ex)
-        {
-            // Log do erro
-            Console.WriteLine($"Erro ao completar tarefa: {ex.Message}");
-            // Retorne um StatusCode adequado e uma mensagem de erro, por exemplo:
-            return StatusCode(500, "Erro interno ao completar a tarefa");
-        }
+        _context.SaveChanges();
+
+        return tarefa;
     }
-
-
-
+    
+    
     [HttpPut("complete/{id:int}")]
     public ActionResult<Tarefa> CompleteTask(int id)
     {
@@ -85,7 +74,13 @@ public class TarefasController : ControllerBase
     [HttpDelete("{id:int}")]
     public ActionResult<Tarefa> Delete(int id)
     {
+       
         var tarefa = _context.Tarefas.FirstOrDefault(x => x.TarefaId == id);
+
+        if (tarefa == null)
+        {
+           return NotFound(id);
+        }
 
         _context.Tarefas.Remove(tarefa);
 
@@ -95,20 +90,22 @@ public class TarefasController : ControllerBase
     }
     
     [HttpDelete("complete/{id:int}")]
-    public ActionResult<Tarefa> DeleteTaskComplete(int id)
+    public ActionResult<TarefaCompleta> DeleteTsakComplete(int id)
     {
-        var tarefa = _context.TarefasComplete.FirstOrDefault(x => x.TarefaId == id);
+       
+        var tarefa = _context.TarefasComplete.FirstOrDefault(x => x.TarefaCompleteId == id);
 
-        if (id == null)
+        if (tarefa == null)
         {
-            _context.TarefasComplete.Remove(tarefa);
-
-            _context.SaveChanges();
-
-            return tarefa;
+           return NotFound(id);
         }
+
+        _context.TarefasComplete.Remove(tarefa);
+
+        _context.SaveChanges();
 
         return tarefa;
     }
+    
 
 }
