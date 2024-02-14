@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApiTodoListBack.Controllers;
 
-[Route("https://api-todolist1.netlify.app")]
+[Route("api-todolist1.netlify.app")]
 [ApiController]
 public class TarefasController : ControllerBase
 {
